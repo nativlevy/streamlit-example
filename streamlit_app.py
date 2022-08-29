@@ -6,9 +6,6 @@ from moviepy.video.io.VideoFileClip import VideoFileClip
 
 url = st.text_input('Video URL')
 
-# url = "https://www.youtube.com/clip/UgkxgdZs6VsmysTGCzZQvpIvVM2IM4H-aJ9w"
-# url = "https://www.youtube.com/clip/UgkxSBQ7LQeHv-pJezfqT4ZEEa7HWeemcq_V"
-
 start_second = st.text_input('Start second')
 end_second = st.text_input('End second')
 
