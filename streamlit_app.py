@@ -9,10 +9,6 @@ url = st.text_input('Video URL')
 if "&list" in url:
     url = url.split("&")[0]
 
-# https://www.youtube.com/watch?v=m5t082lDFdc
-# 4:23
-# 10:26
-
 start_second = st.text_input('Start minutes:seconds', '0:0')
 end_second = st.text_input('End minutes:seconds', '0:0')
 
