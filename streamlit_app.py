@@ -4,6 +4,7 @@ import glob
 import streamlit as st
 import yt_dlp
 from moviepy.video.io.VideoFileClip import VideoFileClip
+from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 
 url = st.text_input('Video URL')
 if "&list" in url:
@@ -37,12 +38,13 @@ if st.button('Convert'):
     list_of_files = glob.glob('*')  # * means all if need specific format then *.csv
     filename = max(list_of_files, key=os.path.getctime)
     print(filename)
-    
+
     target_name = 'part.mp4'
 
     with VideoFileClip(filename) as video:
-        new = video.subclip(start_second, end_second)
-        new.write_videofile(target_name, audio_codec='aac')
+        # new = video.subclip(start_second, end_second)
+        # new.write_videofile(target_name, audio_codec='aac')
+        ffmpeg_extract_subclip(filename, start_second, end_second, targetname=target_name)
 
     with open(target_name, 'rb') as f:
         st.download_button('Download Video', f, target_name)
