@@ -3,6 +3,8 @@ import streamlit as st
 import yt_dlp
 from moviepy.video.io.VideoFileClip import VideoFileClip
 import os
+import traceback
+import sys
 
 if not os.path.exists('uploaded_files'):
     os.makedirs('uploaded_files')
@@ -55,7 +57,11 @@ if st.button('Convert'):
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         # st.write(ydl_opts)
-        ydl.download([url])
+        try:
+            ydl.download([url])
+        except Exception:
+            st.write(traceback.format_exc())
+            raise
 
     list_of_files = glob.glob('*')  # * means all if need specific format then *.csv
     filename = max(list_of_files, key=os.path.getctime)
