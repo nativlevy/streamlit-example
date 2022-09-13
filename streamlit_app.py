@@ -6,6 +6,8 @@ import os
 
 if not os.path.exists('uploaded_files'):
     os.makedirs('uploaded_files')
+
+
 def save_uploadedfile(uploadedfile):
     with open(os.path.join('uploaded_files', uploadedfile.name), "wb") as f:
         f.write(uploadedfile.getbuffer())
@@ -53,7 +55,7 @@ if st.button('Convert'):
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         # st.write(ydl_opts)
-        ydl.download(["https://www.youtube.com/watch?v=sEFx0b9y_Xo"])
+        ydl.download([url])
 
     list_of_files = glob.glob('*')  # * means all if need specific format then *.csv
     filename = max(list_of_files, key=os.path.getctime)
