@@ -1,18 +1,11 @@
-import os
 import glob
-import time
-
 import streamlit as st
 import yt_dlp
 from moviepy.video.io.VideoFileClip import VideoFileClip
-from logic.src.main_2 import run
-
 import os
 
 if not os.path.exists('uploaded_files'):
     os.makedirs('uploaded_files')
-
-
 def save_uploadedfile(uploadedfile):
     with open(os.path.join('uploaded_files', uploadedfile.name), "wb") as f:
         f.write(uploadedfile.getbuffer())
